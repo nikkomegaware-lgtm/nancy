@@ -1,31 +1,33 @@
-const { WebSocketServer } = require('ws');
-const http = require('http');
 const express = require('express');
+const { createServer } = require('http');
+const WebSocket = require('ws');
 
 const app = express();
-// Create a basic HTTP server instance
-const server = http.createServer(app);
-const wss = new WebSocketServer({ server });
-const PORT = process.env.PORT || 8080; // Use process.env.PORT for Render deployment
+// Create a single server instance for both
+const server = createServer(app); 
+const port = process.env.PORT || 10000; // Use the PORT environment variable provided by Render
+
+// Set up WebSocket server
+// Attach the WebSocket server to the same HTTP server instance
+const wss = new WebSocket.Server({ server, path: '/ws' }); 
 
 wss.on('connection', ws => {
     console.log('Client connected');
-
     ws.on('message', message => {
-        // Broadcast received message to all clients
-        wss.clients.forEach(client => {
-            if (client !== ws && client.readyState === WebSocket.OPEN) {
-                client.send(message);
-            }
-        });
+        console.log(`Received: ${message}`);
+        ws.send(`Server: ${message}`);
     });
-
     ws.on('close', () => {
         console.log('Client disconnected');
     });
 });
 
+// Define your standard HTTP routes
+app.get('/', (req, res) => {
+    res.send('Hello HTTP and WebSockets!');
+});
+
 // Start the server
-server.listen(PORT, () => {
-    console.log(`WebSocket server is running on port ${PORT}`);
+server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
