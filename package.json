@@ -1,11 +1,11 @@
 {
   "name": "render-websocket",
   "version": "1.0.0",
-  "private": true,
+  "license": "Apache-2.0",
   "description": "Example app for Render deployment",
   "main": "server.js",
   "engines": {
-    "node": ">=20.x"
+    "node": ">=25.x"
   },
   "scripts": {
     "start": "node server.js",
