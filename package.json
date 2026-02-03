@@ -1,6 +1,7 @@
 {
   "name": "render-websocket",
   "version": "1.0.0",
+  "private": true,
   "description": "Example app for Render deployment",
   "main": "server.js",
   "engines": {
