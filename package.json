@@ -5,7 +5,7 @@
   "description": "Example app for Render deployment",
   "main": "server.js",
   "engines": {
-    "node": ">=25.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "start": "node server.js",
@@ -14,9 +14,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "ws": "^8.0.0",
-    "puppeteer": "^24.0.0",
-    "bare-fs": "^4.0.0",
-    "bare-os": "^3.0.0"
+    "puppeteer": "^24.0.0"
   },
   "author": "Nikko Ferian"
 }
