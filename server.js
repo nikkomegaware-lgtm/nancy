@@ -26,6 +26,9 @@ wss.on('connection', ws => {
 /*
 app.get('/', (req, res) => {
     res.send('Hello HTTP and WebSockets!');
+
+    // or
+    // res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 */
 
