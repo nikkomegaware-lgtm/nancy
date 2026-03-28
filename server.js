@@ -23,9 +23,14 @@ wss.on('connection', ws => {
 });
 
 // Define your standard HTTP routes
+/*
 app.get('/', (req, res) => {
     res.send('Hello HTTP and WebSockets!');
 });
+*/
+
+// use www folder to serve files
+app.use(express.static(path.join(__dirname, 'www')));
 
 // Start the server
 server.listen(port, () => {
